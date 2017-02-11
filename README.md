@@ -10,3 +10,10 @@ be able to:
 * Control coal feeder motor
 * Monitor all temperatures and run boiler at optimal operating temeratures
 
+## Monitored Temperatures
+
+* Boiler temperature (water temperature in the boiler)
+* Exhausts temperature
+* Heating circuit temperature (hot water to radiators)
+* Heating circuit return (cold water from radiators)
+* Hot water cylinder temperature
