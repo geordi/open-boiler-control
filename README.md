@@ -9,6 +9,7 @@ be able to:
 * Control ventilator power
 * Control coal feeder motor
 * Monitor all temperatures and run boiler at optimal operating temeratures
+* Control itself using equitherm curve
 
 ## Monitored Temperatures
 
