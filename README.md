@@ -12,6 +12,7 @@ be able to:
 
 ## Monitored Temperatures
 
+* Outside temperature
 * Boiler temperature (water temperature in the boiler)
 * Exhausts temperature
 * Heating circuit temperature (hot water to radiators)
