@@ -42,7 +42,7 @@ module rod() {
 }
 
 
-module servo(rod_angle=180) {
+module servo(rod_angle=180, left_holder=true, right_holder=true) {
     cube([servo_width, servo_height, servo_thickness]); // servo main body
     difference() { // holding plate
         translate([-5, 18, 0]) { cube([32, 3, servo_thickness]); }
@@ -56,20 +56,14 @@ module servo(rod_angle=180) {
     translate([servo_thickness / 2, 0, servo_thickness / 2]) { rotate([-90, 0, 0]) { cylinder(h=servo_height + 10, r = 2.5); } }
 
     translate([servo_thickness / 2, 30 + 4, servo_thickness / 2]) { rotate([90, rod_angle, 0]) { rod(); } }
+
+    if ( left_holder ) {
+        servo_holder_left();
+    }
+    if ( right_holder ) {
+        servo_holder_right();
+    }
 }
-
-
-// bottom left
-translate([21, 1, holder_thickness + body_thickness + servo_thickness]) { rotate([0, 180, 0]) { servo(205); } }
-
-// bottom right
-translate([140, -1, holder_thickness + body_thickness + servo_thickness]) { rotate([0, 180, 0]) { servo(205); } }
-
-// top right
-translate([140, 97, holder_thickness + body_thickness]) { rotate([180, 180, 0]) { servo(155); } }
-
-// middle right
-translate([153, 81, holder_thickness + body_thickness + servo_thickness]) { rotate([180, 0, 0]) { servo(205); } }
 
 
 module main_plate_holder() {
@@ -86,7 +80,6 @@ module servo_holder_left() {
     servo_holder_height = 4;
     difference() {
         translate([-12, 18 - servo_holder_height, 0]) { cube([12, servo_holder_height, servo_thickness]); }
-        translate([-36, 18 - servo_holder_height - 1, 0]) { rotate([0, 30, 0]) { cube([20, servo_holder_height + 10, servo_thickness + 20]); } }
         translate([-2.5, 22, servo_thickness / 2]) { rotate([90, 0, 0]) { cylinder(h=10, r=1); } }
     }
 }
@@ -96,7 +89,6 @@ module servo_holder_right() {
     servo_holder_height = 4;
     difference() {
         translate([servo_width, 18 - servo_holder_height, 0]) { cube([12, servo_holder_height, servo_thickness]); }
-        translate([36, 18 - servo_holder_height - 1, 0]) { rotate([0, -30, 0]) { cube([20, servo_holder_height + 10, servo_thickness + 20]); } }
         translate([servo_width + 2.5, 22, servo_thickness / 2]) { rotate([90, 0, 0]) { cylinder(h=10, r=1); } }
     }
 }
@@ -106,15 +98,14 @@ climatix_body();
 
 main_plate_holder();
 
-
 // bottom left
-translate([21, 1, holder_thickness + body_thickness + servo_thickness]) { rotate([0, 180, 0]) { servo(205); } }
+translate([6, 0, holder_thickness + body_thickness]) { rotate([0, 0, 0]) { servo(25); } }
 
 // bottom right
-translate([140, -1, holder_thickness + body_thickness + servo_thickness]) { rotate([0, 180, 0]) { servo(205); } }
+translate([body_width - 37, 0, holder_thickness + body_thickness + servo_thickness]) { rotate([0, 180, 0]) { servo(205); } }
 
 // top right
-translate([140, 97, holder_thickness + body_thickness]) { rotate([180, 180, 0]) { servo(155); } }
+translate([body_width - 37, body_height + 4, holder_thickness + body_thickness]) { rotate([180, 180, 0]) { servo(155); } }
 
 // middle right
-translate([153, 81, holder_thickness + body_thickness + servo_thickness]) { rotate([180, 0, 0]) { servo(205); } }
+translate([153, 81, holder_thickness + body_thickness + servo_thickness]) { rotate([180, 0, 0]) { servo(205, false, true); } }
