@@ -92,6 +92,12 @@ module main_plate_holder() {
         }
 
     }
+
+    translate([-5, -5, body_thickness]) { cylinder(r=10, h=3); }
+    translate([body_width + 5, -5, body_thickness]) { cylinder(r=10, h=3); }
+    translate([-5, body_height + 5, body_thickness]) { cylinder(r=10, h=3); }
+    translate([body_width + 5, body_height + 5, body_thickness]) { cylinder(r=10, h=3); }
+
 }
 
 
@@ -113,8 +119,8 @@ module servo_holder_right() {
 }
 
 
-enable_vitamins = !false;
-enable_servos = !false;
+enable_vitamins = false;
+enable_servos = false;
 
 if ( enable_vitamins ) {
     climatix_body();
