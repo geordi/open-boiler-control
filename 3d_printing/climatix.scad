@@ -1,5 +1,5 @@
 body_width = 173;
-body_height = 95;
+body_height = 97;
 body_thickness = 15;
 
 servo_width = 23;
@@ -71,32 +71,33 @@ module servo(rod_angle=180, enable_servo_body=true, left_holder=true, right_hold
 module main_plate_holder() {
     union() {
         difference() {
-            translate([-7, 0, body_thickness]) { cube([body_width + 15, body_height, holder_thickness]); }
-            translate([15, 25, 0]) { cube([20 + 4, 13 * 3 + 2 * 2 + 4, 60]); }
-            translate([body_width - 17 - 20 - 2, 25, 0]) { cube([20 + 4, 13 * 3 + 2 * 2 + 4, 60]); }
-            translate([17 + 20 + 6, 25, 0]) { cube([85, 47, 60]); }
+            translate([-6, 0, body_thickness]) { cube([body_width + 15, body_height, holder_thickness]); }
+            translate([15, 24, 0]) { cube([20 + 4, 13 * 3 + 2 * 2 + 6, 60]); }
+            translate([body_width - 17 - 20 - 3, 24, 0]) { cube([20 + 6, 13 * 3 + 2 * 2 + 6, 60]); }
+            translate([17 + 20 + 6, 24, 0]) { cube([85, 49, 60]); }
         }
         
         // extended piece to support right middle servo
-        translate([body_width, 55, body_thickness]) { cube([18, 20, holder_thickness]); }
+        translate([body_width, 55, body_thickness]) { cube([15, 20, holder_thickness]); }
 
         difference() {
-            translate([-7, -10, body_thickness]) { cube([body_width + 15, 10, holder_thickness]); }
+            translate([-6, -10 + 1, body_thickness]) { cube([body_width + 15, 10 + 1, holder_thickness]); }
             translate([40, -5, 0]) { cube([15, 5, 40]); }
             translate([145, -5, 0]) { cube([15, 5, 40]); }
         }
         difference() {
-            translate([-7, body_height, body_thickness]) { cube([body_width + 15, 10, holder_thickness]); }
+            translate([-6, body_height - 1, body_thickness]) { cube([body_width + 15, 10 + 1, holder_thickness]); }
             translate([40, body_height, 0]) { cube([15, 5, 40]); }
             translate([145, body_height, 0]) { cube([15, 5, 40]); }
         }
 
     }
 
-    translate([-5, -5, body_thickness]) { cylinder(r=10, h=3); }
-    translate([body_width + 5, -5, body_thickness]) { cylinder(r=10, h=3); }
-    translate([-5, body_height + 5, body_thickness]) { cylinder(r=10, h=3); }
-    translate([body_width + 5, body_height + 5, body_thickness]) { cylinder(r=10, h=3); }
+    // holders for 3D printer
+    //translate([-5, -5, body_thickness]) { cylinder(r=10, h=3); }
+    //translate([body_width + 5, -5, body_thickness]) { cylinder(r=10, h=3); }
+    //translate([-5, body_height + 5, body_thickness]) { cylinder(r=10, h=3); }
+    //translate([body_width + 5, body_height + 5, body_thickness]) { cylinder(r=10, h=3); }
 
 }
 
