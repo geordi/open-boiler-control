@@ -1,6 +1,6 @@
 body_width = 173;
 body_height = 97;
-body_thickness = 15;
+body_thickness = 0;//17;
 
 servo_width = 23;
 servo_height = 22;
@@ -131,13 +131,24 @@ main_plate_holder();
 
 
 // bottom left
-translate([6, 0, holder_thickness + body_thickness]) { rotate([0, 0, 0]) { servo(25, enable_servos); } }
+translate([6, 0, holder_thickness + body_thickness]) {
+  rotate([0, 0, 0]) { servo(25, enable_servos); }
+}
 
 // bottom right
-translate([body_width - 37, 0, holder_thickness + body_thickness + servo_thickness]) { rotate([0, 180, 0]) { servo(205, enable_servos); } }
+//translate([body_width - 37, 0, holder_thickness + body_thickness + servo_thickness]) {
+//  rotate([0, 180, 0]) { servo(205, enable_servos); }
+//}
+translate([body_width - 37 - servo_width, 0, holder_thickness + body_thickness]) {
+  rotate([0, 0, 0]) { servo(25, enable_servos); }
+}
 
 // top right
-translate([body_width - 37, body_height + 4, holder_thickness + body_thickness]) { rotate([180, 180, 0]) { servo(155, enable_servos); } }
+translate([body_width - 37, body_height + 4, holder_thickness + body_thickness]) {
+  rotate([180, 180, 0]) { servo(155, enable_servos); }
+}
 
 // middle right
-translate([153, 81, holder_thickness + body_thickness + servo_thickness]) { rotate([180, 0, 0]) { servo(205, enable_servos, false, true); } }
+translate([153, 81, holder_thickness + body_thickness + servo_thickness]) {
+  rotate([180, 0, 0]) { servo(205, enable_servos, false, true); }
+}
