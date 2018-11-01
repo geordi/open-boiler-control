@@ -1,0 +1,22 @@
+{% load static %}
+<html>
+    <head>
+        <title>Boiler Console</title>
+        <script type="text/javascript" src="{% static 'web/ajax_buttons.js' %}"></script>
+    </head>
+
+    <body>
+        <h1>Boiler Console</h1>
+        <center>
+            <a href="#" title="Up" onclick="command('U');return false;">UP</a>
+        </center>
+        <center>
+            <a href="#" title="Up" onclick="command('B');return false;">BACK</a><img src="http://192.168.2.33:8080/?action=stream" /><a href="#" title="Up" onclick="command('E');return false;">ENTER</a>
+        </center>
+        <center>
+            <a href="#" title="Up" onclick="command('D');return false;">DOWN</a>
+        </center>
+
+        Last command send: <b><span id="last_command"></span></b>
+    </body>
+</html>
